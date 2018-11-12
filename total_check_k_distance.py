@@ -92,19 +92,17 @@ def main(control):
         control.solve()
     
     d = Propagator._Propagator__max_dist
-    print ""
-    print "Max distance between two answer sets:", d
+    print("")
+    print("Max distance between two answer sets: %s"%d)
 
     if v:
-        print ""
+        print("")
         for i in range(len(models)):
             for j in range(i+1,len(models)):
                 partial = distance(models[i], models[j])
-                print "Distance between %s and %s = %s"%(models[i], models[j], partial)
+                print("Distance between %s and %s = %s"%(models[i], models[j], partial))
                 total += partial
-        print "Total distance: %s"%total
-
-#clingo k-distance.py test3.lp --sign-def=rnd --sign-fix --rand-freq=1 --seed=$RANDOM --enum-mode=record 0 -c k=3 -c n=15 -c v=true       
+        print("Total distance: %s"%total) 
 #end.
 %
 #const k=2.
