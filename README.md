@@ -70,7 +70,7 @@ CPU Time     : 0.035s
 
 ## Test
 
-To run the tests, go into the test directory. Normalize the results from a give program (file_name.lp) with the command:
+To run the tests, go into the test directory. Normalize the results from a given program (file_name.lp) with the command:
 ```
 python run.py -c clingo normalize file_name.lp > file_name.sol
 ```
