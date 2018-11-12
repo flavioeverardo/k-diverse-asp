@@ -34,5 +34,5 @@ install:
 
 script:
   - python --version
-  - echo "TODO script with clingo"
-#  - clingo example.lp propagator_k_distance.py -c n=7 -c k=2 0 -c v=true
+  - cd test
+  - python run.py -c clingo run
