@@ -1,4 +1,4 @@
-language: c
+language: python
 
 matrix:
   include:
@@ -33,5 +33,6 @@ install:
   - conda install -c potassco clingo
 
 script:
-  - python -V
+  - python --version
+  - echo "TODO script with clingo"
 #  - clingo example.lp propagator_k_distance.py -c n=7 -c k=2 0 -c v=true
