@@ -30,6 +30,7 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda info -a
+  - conda install -c potassco clingo
 
 script:
   - clingo example.lp propagator_k_distance.py -c n=7 -c k=2 0 -c v=true
