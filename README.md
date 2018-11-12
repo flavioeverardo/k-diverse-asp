@@ -5,10 +5,10 @@ Variations of clasp-nk to calculate k-similar/diverse answer sets
 
 Extending clasp by means of custom propagators developed in Python, we present three ways to get n answer sets which are k similar/diverse. This work is based on clasp-nk by [Eiter et al. 2009].
 
-The three approaches to get a set n of answer sets which respect a k-similarity/diversity are:<\br>
-Propagator_k_distance. Get answer sets with distance k during propagation.<\br>
-Fixpoint_check_k_distance. Get answer sets with distance k when fixpoints are reached.<\br>
-Total_check_k_distance. Get answer sets with distance k on total assignments.<\br>
+The three approaches to get a set n of answer sets which respect a k-similarity/diversity are:</br>
+Propagator_k_distance. Get answer sets with distance k during propagation. </br>
+Fixpoint_check_k_distance. Get answer sets with distance k when fixpoints are reached.</br>
+Total_check_k_distance. Get answer sets with distance k on total assignments.</br>
 
 ## Table of Contents
 
@@ -36,7 +36,7 @@ p(4).
 :- p(2).
 :- p(1), p(4).
 
-$ clingo example.lp propagator_k_distance.py -c n=7 -c k=2 0 -c v=true
+$ clingo example.lp propagator_k_distance.py -c n=7 -c k=2 -c v=true 0
 clingo version 5.3.0
 Reading from example.lp ...
 number of unassigned literals: 3
