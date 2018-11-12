@@ -39,7 +39,7 @@ class Propagator:
                     init.add_watch(-lit)
                     self.__states[thread_id].append(lit)
                     self.__literals.append(lit)
-        print "number of unassigned literals:", len(self.__literals)
+        print("number of unassigned literals: %s"%len(self.__literals))
 
     """
     Propagate method and calculate distances on partial assignments

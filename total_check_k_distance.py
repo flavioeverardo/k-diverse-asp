@@ -32,7 +32,7 @@ class Propagator:
             value = init.assignment.value(lit)
             if lit not in self.__literals and init.assignment.value(lit) is None:
                 self.__literals.append(lit)
-        print "number of unassigned literals:", len(self.__literals)
+        print("number of unassigned literals: %s"%len(self.__literals))
 
     """
     Check Method on total assignments
