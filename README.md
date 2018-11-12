@@ -15,6 +15,7 @@ Total_check_k_distance. Get answer sets with distance k on total assignments.</b
 - [Requirements](#requirements)
 - [Usage](#usage)
 - [Example](#example)
+- [Test](#test)
 - [License](#license)
 
 ## Requirements
@@ -65,6 +66,17 @@ Models       : 4
 Calls        : 1
 Time         : 0.071s (Solving: 0.02s 1st Model: 0.02s Unsat: 0.00s)
 CPU Time     : 0.035s
+```
+
+## Test
+
+To run the tests, go into the test directory. Normalize the results from a give program (file_name.lp) with the command:
+```
+python run.py -c clingo normalize file_name.lp > file_name.sol
+```
+Next, run the tests with the command:
+```
+python run.py -c clingo run
 ```
 
 ## License
