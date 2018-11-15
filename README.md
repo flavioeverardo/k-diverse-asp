@@ -3,7 +3,9 @@ Variations of clasp-nk to calculate k-similar/diverse answer sets
 
 ## Description
 
-Extending clasp by means of custom propagators developed in Python, we present three ways to get n answer sets which are k similar/diverse. This work is based on clasp-nk by [Eiter et al. 2009].
+Extending clasp by means of custom propagators developed in Python, we present three ways to get n answer sets which are k similar/diverse. This work is based on clasp-nk by [Eiter et al. 2009].</br>
+Let the distance (k) between two answer sets be the Hamming distance, defined as the number of atoms that differs from one answer to another.</br>
+Two answer sets are adjacent if their Hamming distance is one; in other words, they are adjacent if only one atom differs.
 
 The three approaches to get a set n of answer sets which respect a k-similarity/diversity are:</br>
 Propagator_k_distance. Get answer sets with distance k during propagation. </br>
