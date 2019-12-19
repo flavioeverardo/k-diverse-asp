@@ -1,7 +1,7 @@
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/flavioeverardo/k-diverse-asp)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
-# nk-diverse-asp
+# k-diverse-asp
 Variations of *clasp-nk* to calculate *k*-similar/diverse answer sets.
 
 ## Description
