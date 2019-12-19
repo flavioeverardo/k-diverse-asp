@@ -31,7 +31,11 @@ Incremental_k_distance. Incrementally, search for *k* distant answer sets until 
 - [License](#license)
 
 ## Requirements
-Tested using Travis CI under Linux and Mac, with Python 2.7 and 3.7.
+`k-diverse-asp` works with `clingo` version 5.4
+and is tested under Unix systems using Travis CI for Linux and Mac with Python 2.7 and 3.6. </br>
+The easiest way to obtain Python enabled clingo packages is using Anaconda.
+Packages are available in the Potassco channel.
+First install either Anaconda or Miniconda and then run: `conda install -c potassco clingo`.
 
 ## Usage
 Example command line call using the propagator_k_distance. Please use the full command to enable the random heuristic of *clasp*.
