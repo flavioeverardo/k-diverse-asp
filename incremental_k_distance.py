@@ -101,9 +101,6 @@ def main(control):
         else:
             k+=1
 
-    """
-    This has to be done differently cause the 
-    """
 #end.
 %
 #const k=2.

@@ -78,32 +78,22 @@ def main(control):
     models = []
     total = 0
     k = int(str(control.get_const("k")))
-    v = str(control.get_const("v"))
-    if v == "true":
-        v = True
-    else:
-        v = False
     control.ground([("base", [])])
     control.register_propagator(Propagator(k))
 
-    if v:
-        control.solve(None, lambda model: models.append(model.symbols(shown=True)))
-    else:
-        control.solve()
-    
+    control.solve(None, lambda model: models.append(model.symbols(shown=True)))
+
     d = Propagator._Propagator__max_dist
     print("")
     print("Max distance between two answer sets: %s"%d)
 
-    if v:
-        print("")
-        for i in range(len(models)):
-            for j in range(i+1,len(models)):
-                partial = distance(models[i], models[j])
-                print("Distance between %s and %s = %s"%(models[i], models[j], partial))
-                total += partial
-        print("Total distance: %s"%total) 
+    print("")
+    for i in range(len(models)):
+        for j in range(i+1,len(models)):
+            partial = distance(models[i], models[j])
+            print("Distance between %s and %s = %s"%(models[i], models[j], partial))
+            total += partial
+    print("Total distance: %s"%total) 
 #end.
 %
 #const k=2.
-#const v="False".
