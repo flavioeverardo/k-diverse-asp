@@ -1,4 +1,5 @@
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/flavioeverardo/k-diverse-asp)
+[![Build Status](https://travis-ci.com/flavioeverardo/k-diverse-asp.svg?branch=master)](https://travis-ci.com/flavioeverardo/k-diverse-asp)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 # k-diverse-asp
@@ -30,7 +31,7 @@ Incremental_k_distance. Incrementally, search for *k* distant answer sets until 
 - [License](#license)
 
 ## Requirements
-Tested with Python 2.7 on MacOS 10.13.2 High Sierra 64-bits. Travis CI testing coming soon.
+Tested using Travis CI under Linux and Mac, with Python 2.7 and 3.7.
 
 ## Usage
 Example command line call using the propagator_k_distance. Please use the full command to enable the random heuristic of *clasp*.
