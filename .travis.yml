@@ -1,8 +1,5 @@
 language: python
-python:
-  - "2.7"
-  - "3.9"
-  
+
 matrix:
   include:
     - os: linux
@@ -19,7 +16,7 @@ matrix:
         - ANACONDA=https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh
     - os: osx
       env:
-        - PYTHON_VERSION=3.9
+        - PYTHON_VERSION=3.6
         - ANACONDA=https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
 
 git:
