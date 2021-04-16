@@ -42,6 +42,10 @@ Example command line call using the propagator_k_distance. Please use the full c
 ```bash
 $ clingo example.lp fixpoint_k_distance.py 4 -c k=3 [--sign-def=rnd --sign-fix --rand-freq=1 --seed=$RANDOM --enum-mode=record]
 ```
+Another example call using the incremental approach asking for 4 answer sets starting with a distance of at least 3 and *clasp's* random heuristic.
+```
+clingo example.lp incremental_k_distance.py 4 -c k=3 --sign-def=rnd --sign-fix --rand-freq=1 --seed=$RANDOM --enum-mode=record
+```
 
 ## Example
 
@@ -55,35 +59,35 @@ p(4).
 :- p(2).
 :- p(1), p(4).
 
-clingo example.lp fixpoint_k_distance.py 4 -c k=2
+$ clingo example.lp fixpoint_k_distance.py 4 -c k=3 --sign-def=rnd --sign-fix --rand-freq=1 --seed=$RANDOM --enum-mode=record                                  [1:54:05]
 clingo version 5.4.0
 Reading from example.lp ...
-number of unassigned literals: 4
+number of unassigned literals: 8
 Solving...
 Answer: 1
-p(3) p(4)
+p(3) p(4) p(6) p(8) p(11)
 Answer: 2
-p(3) p(4) p(6) p(7)
+p(3) p(4) p(6) p(8) p(10) p(12)
 Answer: 3
-p(3) p(4) p(6) p(8)
+p(3) p(4) p(6) p(7) p(8) p(9) p(11) p(12)
 Answer: 4
-p(3) p(4) p(7) p(8)
+p(3) p(4) p(6) p(7) p(8) p(9) p(10)
 
-Max distance between two answer sets: 3
-
-Distance between [p(3), p(4)] and [p(3), p(4), p(6), p(7)] = 2
-Distance between [p(3), p(4)] and [p(3), p(4), p(6), p(8)] = 2
-Distance between [p(3), p(4)] and [p(3), p(4), p(7), p(8)] = 2
-Distance between [p(3), p(4), p(6), p(7)] and [p(3), p(4), p(6), p(8)] = 2
-Distance between [p(3), p(4), p(6), p(7)] and [p(3), p(4), p(7), p(8)] = 2
-Distance between [p(3), p(4), p(6), p(8)] and [p(3), p(4), p(7), p(8)] = 2
-Total distance: 12
+Distance between answer sets 1 and 2 = 3
+Distance between answer sets 1 and 3 = 3
+Distance between answer sets 1 and 4 = 4
+Distance between answer sets 2 and 3 = 4
+Distance between answer sets 2 and 4 = 3
+Distance between answer sets 3 and 4 = 3
+Total distance: 20
+Max distance between two answer sets: 4
 SATISFIABLE
 
 Models       : 4+
 Calls        : 1
-Time         : 0.047s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
-CPU Time     : 0.028s
+Time         : 0.012s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+CPU Time     : 0.012s
+
 ```
 
 ```
@@ -107,6 +111,88 @@ Models       : 2
 Calls        : 1
 Time         : 0.065s (Solving: 0.04s 1st Model: 0.00s Unsat: 0.04s)
 CPU Time     : 0.029s
+```
+
+Example of the incremental solving
+```
+$ clingo example.lp incremental_k_distance.py 4 -c k=3 --sign-def=rnd --sign-fix --rand-freq=1 --seed=$RANDOM --enum-mode=record                               [2:03:49]
+clingo version 5.4.0
+Reading from example.lp ...
+
+k: 3
+Solving...
+Answer: 1
+p(3) p(4) p(6) p(8) p(10)
+Answer: 2
+p(3) p(4) p(6) p(12)
+Answer: 3
+p(3) p(4) p(6) p(7) p(8) p(11)
+Answer: 4
+p(3) p(4) p(6) p(7) p(10) p(11) p(12)
+
+Distance between answer sets 1 and 2 = 3
+Distance between answer sets 1 and 3 = 3
+Distance between answer sets 1 and 4 = 4
+Distance between answer sets 2 and 3 = 4
+Distance between answer sets 2 and 4 = 3
+Distance between answer sets 3 and 4 = 3
+Total distance: 20
+Max distance between two answer sets: 4
+
+k: 4
+Solving...
+Answer: 1
+p(3) p(4) p(6) p(8) p(10)
+Answer: 2
+p(3) p(4) p(5) p(6) p(7) p(8) p(12)
+Answer: 3
+p(3) p(4) p(8) p(11) p(12)
+Answer: 4
+p(3) p(4) p(5) p(7) p(8) p(10) p(11)
+
+Distance between answer sets 1 and 2 = 4
+Distance between answer sets 1 and 3 = 4
+Distance between answer sets 1 and 4 = 4
+Distance between answer sets 2 and 3 = 4
+Distance between answer sets 2 and 4 = 4
+Distance between answer sets 3 and 4 = 4
+Total distance: 24
+Max distance between two answer sets: 4
+
+k: 5
+Solving...
+Answer: 1
+p(3) p(4) p(6) p(8) p(10)
+
+Total distance: 0
+Max distance between two answer sets: 0
+------------------------------------------------------------------------------------
+Optimum
+Answer: 1
+p(3) p(4) p(6) p(8) p(10)
+Answer: 2
+p(3) p(4) p(5) p(6) p(7) p(8) p(12)
+Answer: 3
+p(3) p(4) p(8) p(11) p(12)
+Answer: 4
+p(3) p(4) p(5) p(7) p(8) p(10) p(11)
+
+Distance between answer sets 1 and 2 = 4
+Distance between answer sets 1 and 3 = 4
+Distance between answer sets 1 and 4 = 4
+Distance between answer sets 2 and 3 = 4
+Distance between answer sets 2 and 4 = 4
+Distance between answer sets 3 and 4 = 4
+Total distance: 24
+Max distance between two answer sets: 4
+
+SATISFIABLE
+
+Models       : 9
+Calls        : 3
+Time         : 0.041s (Solving: 0.01s 1st Model: 0.00s Unsat: 0.01s)
+CPU Time     : 0.041s
+
 ```
 
 ## Test
