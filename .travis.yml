@@ -8,7 +8,7 @@ matrix:
         - ANACONDA=https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
     - os: linux
       env:
-        - PYTHON_VERSION=3.6
+        - PYTHON_VERSION=3.8
         - ANACONDA=https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
     - os: osx
       env:
@@ -16,7 +16,7 @@ matrix:
         - ANACONDA=https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh
     - os: osx
       env:
-        - PYTHON_VERSION=3.6
+        - PYTHON_VERSION=3.8
         - ANACONDA=https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
 
 git:
