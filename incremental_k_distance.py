@@ -11,6 +11,28 @@ def distance(l1, l2):
     l5 = list(set(l2)-set(l3))   # Difference
     return len(l4)+len(l5)
 
+def calculate_distances(d, models):
+    total = 0;
+    local_dist = 0;
+    print("")
+
+    for i in range(len(models)):
+        for j in range(i+1,len(models)):
+            partial = distance(models[i], models[j])
+            print("Distance between answer sets %s and %s = %s"%(i+1, j+1, partial))
+            total += partial
+            if local_dist < partial:
+                local_dist = partial
+    print("Total distance: %s"%total)
+    print("Max distance between two answer sets: %s"%local_dist)
+    return total
+
+def print_answer_sets(models):
+    for i in range(len(models)):
+        print("Answer: %s"%(i+1))
+        print(' '.join(map(str, sorted(models[i]))))
+    
+
 class Propagator:
     def __init__(self, k):
         self.__states = []
@@ -77,30 +99,29 @@ class Propagator:
 def main(control):
     k = int(str(control.get_const("k")))
     control.ground([("base", [])])
+    optimum = []
     while True:
         models = []
         total = 0
         control.register_propagator(Propagator(k))
-        print "k: %s"%k
+        print("\nk: %s"%k)
         result = control.solve(None, lambda model: models.append(model.symbols(shown=True)))
     
         d = Propagator._Propagator__max_dist
-        print("")
-        print("Max distance between two answer sets: %s"%d)
-
-        print("")
-        for i in range(len(models)):
-            for j in range(i+1,len(models)):
-                partial = distance(models[i], models[j])
-                print("Distance between %s and %s = %s"%(models[i], models[j], partial))
-                total += partial
-        print("Total distance: %s"%total)
+        total = calculate_distances(d, models)
 
         if result.unsatisfiable or total == 0 or d < k:
             break
         else:
+            optimum = models
             k+=1
 
+    print("------------------------------------------------------------------------------------")
+    print("Optimum")
+    print_answer_sets(optimum)
+    calculate_distances(d, optimum)
+    print("")
+    
 #end.
 %
 #const k=2.
