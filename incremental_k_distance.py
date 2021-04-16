@@ -11,7 +11,7 @@ def distance(l1, l2):
     l5 = list(set(l2)-set(l3))   # Difference
     return len(l4)+len(l5)
 
-def calculate_distances(d, models):
+def calculate_distances(models):
     total = 0;
     local_dist = 0;
     print("")
@@ -98,6 +98,7 @@ class Propagator:
 
 def main(control):
     k = int(str(control.get_const("k")))
+    n = int(str(control.configuration.solve.models))
     control.ground([("base", [])])
     optimum = []
     while True:
@@ -108,18 +109,19 @@ def main(control):
         result = control.solve(None, lambda model: models.append(model.symbols(shown=True)))
     
         d = Propagator._Propagator__max_dist
-        total = calculate_distances(d, models)
+        total = calculate_distances(models)
 
         if result.unsatisfiable or total == 0 or d < k:
             break
         else:
-            optimum = models
+            if len(models) == n:
+                optimum = models
             k+=1
 
     print("------------------------------------------------------------------------------------")
     print("Optimum")
     print_answer_sets(optimum)
-    calculate_distances(d, optimum)
+    calculate_distances(optimum)
     print("")
     
 #end.

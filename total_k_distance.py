@@ -11,6 +11,21 @@ def distance(l1, l2):
     l5 = list(set(l2)-set(l3))   # Difference
     return len(l4)+len(l5)
 
+def calculate_distances(models):
+    total = 0;
+    local_dist = 0;
+    print("")
+
+    for i in range(len(models)):
+        for j in range(i+1,len(models)):
+            partial = distance(models[i], models[j])
+            print("Distance between answer sets %s and %s = %s"%(i+1, j+1, partial))
+            total += partial
+            if local_dist < partial:
+                local_dist = partial
+    print("Total distance: %s"%total)
+    print("Max distance between two answer sets: %s"%local_dist)
+
 class Propagator:
     def __init__(self, k):
         self.__states = []
@@ -83,17 +98,8 @@ def main(control):
 
     control.solve(None, lambda model: models.append(model.symbols(shown=True)))
 
-    d = Propagator._Propagator__max_dist
-    print("")
-    print("Max distance between two answer sets: %s"%d)
-
-    print("")
-    for i in range(len(models)):
-        for j in range(i+1,len(models)):
-            partial = distance(models[i], models[j])
-            print("Distance between %s and %s = %s"%(models[i], models[j], partial))
-            total += partial
-    print("Total distance: %s"%total) 
+    calculate_distances(models)
+    
 #end.
 %
 #const k=2.
